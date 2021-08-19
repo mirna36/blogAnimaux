@@ -2,6 +2,7 @@
 body{
     background-color: #F0F0F0;
     color: #555;
+    position: 0;
         margin: 0;
   
 
@@ -10,17 +11,30 @@ body{
 
 /*Nav*/
 nav{
+  
     background-color: #A7E0E0;
-        text-transform: uppercase;
+    text-transform: uppercase;
     letter-spacing: 3px;
     margin: 0;
-    min-height: 8vh;
+    min-height: 10vh;
    
 
+}
+nav .logo{
+    float: left;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+   
 }
 
 
 .nav-links{
+    float: center;
+    width: 60%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,21 +59,27 @@ a{
 }
 
 
-.burger{
+nav .icon-burger{
     display: none;
     position: absolute;
+    right: 5%;
     top: 5%;
-    left: 70%;
+    transform: translateY(-50%);
     cursor: pointer;
-    margin-left: 30px;
+    
     }
-.burger div {
+nav .icon-burger .line {
         width: 50px;
         height: 5px;
         margin: 5px;
         background-color: #555;
-        transition: all 0.3s ease;
+        border-radius: 3px;
+        transition: all .3s ease-in-out;
         
+    }
+    #nav-toggle{
+        position: absolute;
+        top: -100px;
     }
 
 
@@ -108,8 +128,9 @@ a{
     
     display: grid;
     gap: 25px;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     margin-top: 200px;
+    margin-bottom: 100PX;
    
     
     
@@ -117,14 +138,15 @@ a{
 
 .box > img {
    
-    width: 100%;
+    width: 60%;
   
     
 
 }
 
 .box{
-    padding: 30px;
+    padding: 15px;
+
     
 
 }
@@ -180,86 +202,100 @@ i{
     }
     
     .container p{
-        
+       
+        margin-left: 50px;
         margin-right: 15em;
         width: 40%;
         
     }
     .container-principe h1{
-        margin-top: 70px;
+        margin-top: 150px;
     }
 
     /*nav burger*/
 
-  
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+    }
 
-    .burger{
-        display: block;
-    }
-    body{
-        overflow-X: hidden;
-    }
-    
-    .nav-links{
-      
-        position: absolute;
+    nav .nav-links{
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
         right: 0;
-        height: 100vh;
-        top: 10vh;
-
-        background-color: rgba(70, 97, 100, 0.74);
-        display: flex;
+        top: 50px;
+        bottom: 100%;
+        height: auto;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
-        transform: translateX(100%);
-        transition: 0.5s ease-in;
+        justify-content: space-evenly;
+        background-color: rgba(85, 85, 85, 0.856);
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+        
     }
-
+    .contact{
+        margin-left: 0;
+    }
     .nav-links a{
         color:white ;
-        font-size: 2em;
-        font-weight: 700;
+        font-size: 16px;
         text-decoration: none;
         letter-spacing: 3px;
+        
     
     }
-    
-.nav-links li{
-    opacity: 0;
-    
-}
-.contact{
-    
-    margin-left: 0;
-}
+
+    nav :checked ~ .nav-links{
+        bottom: 0;
+    }
+
+    nav .icon-burger{
+        display: block;
+    }
+
+    nav :checked ~
+    .icon-burger .line:nth-child(1){
+        transform: translateY(10px) rotate(225deg);
+        
+    }
+    nav :checked ~
+    .icon-burger .line:nth-child(3){
+        transform: translateY(-10px) rotate(-225deg);
+        
+    }
+    nav :checked ~
+    .icon-burger .line:nth-child(2){
+        opacity: 0;
+        
+    }
+
+ 
 
 .nav-active{
-    transform: translateX(0%);
+    transform: translateY(0%);
 }
     /*animation*/
     @keyframes navLinkFade {
         from{
             opacity: 0;
-            transform: translateX(50px);
+            transform: translateY(50px);
         }
         to{
             opacity: 1;
-            transform: translateX(0px);
+            transform: translateY(0px);
         }
     }
 
-    /*animation burger X*/
-    .toggle .line1{
-        transform: rotate(-45deg) translate(-5px, 6px);
+   
+    @media screen and (max-width : 692px) {
+        .principes{
+            display: flex;
+            flex-direction: column;
+        }
     }
-    .toggle .line2{
-        opacity: 0;
-    }
-    .toggle .line3{
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-
 
 }
 
